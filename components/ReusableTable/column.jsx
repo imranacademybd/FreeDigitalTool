@@ -175,7 +175,7 @@ export const columns = [
                     <TooltipTrigger>
                       {" "}
                       <Link
-                        href={`http://localhost:3000/dashboard/tools/${data?.slug}`}
+                        href={`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/tools/${data?.slug}`}
                       >
                         {" "}
                         <Edit className="h-5 w-5" />

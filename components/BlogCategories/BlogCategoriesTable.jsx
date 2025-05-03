@@ -29,9 +29,9 @@ const BlogCategoriesTable = ({ categories }) => {
         initialData={categoriesData}
         filterInputPlaceholder={"Search Pages by Name"}
         filterInputColumn={"name"}
-        filterSelectColumn={"parentCategory"}
+       
         filterSelectLabel="Filter by Title"
-        filterSelectPlaceholder="Parent Category"
+        
         firstSearchInputPlaceholder={"name"}
         secondSearchInputPlaceholder={"title"}
         

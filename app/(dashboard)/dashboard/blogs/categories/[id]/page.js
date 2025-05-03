@@ -8,10 +8,8 @@ const page = async ({ params }) => {
   const res = await axiosClient.get(
     `/api/blogs/blog-categories/${id}`
   );
-  const parentCategoryResponse = await axiosClient.get(
-    "/api/admin/getCategory"
-  );
-  const parentCategories = parentCategoryResponse.data.data;
+  
+ 
   const { status, category: blogCategory } = res.data;
   if (status === "ERROR") {
     return notFound();
@@ -23,7 +21,7 @@ const page = async ({ params }) => {
       <h2 className="text-2xl font-semibold mb-8">Edit {blogCategory?.name}</h2>
       <EditBlogCategoryForm
         initialData={blogCategory}
-        parentCategories={parentCategories}
+       
       />
     </div>
   );

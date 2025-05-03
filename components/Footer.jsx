@@ -86,7 +86,7 @@ const Footer = () => {
         {/* Copyright Section */}
         <div className="text-center border-t pt-6">
           <p className="text-sm">
-            Copyrights © 2024. All Rights Reserved by <strong>SEOSTUDIO</strong>
+            Copyrights © 2024. All Rights Reserved by <strong>FreeDigitalTool</strong>
           </p>
         </div>
       </div>

@@ -2,10 +2,10 @@ export const dynamic = "force-dynamic";
 import { refreshDataTools } from "@/components/Refresh-Functions/toolsRefreshFunction";
 import { columns } from "@/components/ReusableTable/column";
 import { DataTable } from "@/components/ReusableTable/data-table";
-import { payments } from "@/data/payments";
+
 import { axiosClient } from "@/lib/apiClient";
 
-import React from "react";
+
 
 const AllToolsPage = async () => {
   // edit this to fetch tools from the server

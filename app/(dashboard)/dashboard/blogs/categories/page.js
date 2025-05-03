@@ -14,7 +14,7 @@ const page = async () => {
   );
   const blogCategories = blogCategoryResponse?.data?.simplifiedBlogsCategories;
 
-  const parentCategories = parentCategoryResponse.data.data;
+
 
   return (
     <div className="min-h-screen w-full container mx-auto py-10 max-w-7xl  p-6 bg-white shadow-lg rounded-2xl border border-gray-200 grid grid-cols-1 xl:grid-cols-3 gap-8">

@@ -54,6 +54,7 @@ export default async function ToolPage({ params }) {
         `/api/blogs?recent=true`
       );
       const blogs = recentBlogResponse?.data?.simplifiedBlogs || [];
+      console.log(tool, "tool details");
  
    
   return (

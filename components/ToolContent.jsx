@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // Custom renderer to add IDs and classes to headings
-import { marked } from "marked";
+import { marked, Slugger } from "marked";
 import Link from "next/link";
-
-const headingMap = new Map();
+const { Slugger } = marked;
+const slugger = new Slugger();
+slugger.headingMap = {}; 
 import {
   FaFacebookF,
   FaTwitter,
@@ -24,6 +25,7 @@ import {
 } from "react-share";
 
 marked.use({
+  slugger,
   walkTokens(token) {
     if (token.type === "heading") {
       const raw = token.text || "";
@@ -37,7 +39,7 @@ marked.use({
     }
   },
   renderer: {
-    heading(text) {
+    heading(text, ) {
       let plainText = "";
 
       if (typeof text === "string") {

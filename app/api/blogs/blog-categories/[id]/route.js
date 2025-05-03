@@ -7,14 +7,11 @@ export async function GET(req, { params }) {
   try {
     await dbConnect();
     const { id } = await params;
-    const blogCategory = await BlogCategory.findById(id).populate("parentCategory");
+    const blogCategory = await BlogCategory.findById(id);
 
     // Check if blogs are found
     const simplifiedBlogsCategory = blogCategory?.toObject();
-    if (simplifiedBlogsCategory) {
-      simplifiedBlogsCategory.parentCategory =
-        simplifiedBlogsCategory?.parentCategory?.name || null; // ✅ Only the name as a string
-    }
+   
 
     if (!simplifiedBlogsCategory) {
       return Response.json(

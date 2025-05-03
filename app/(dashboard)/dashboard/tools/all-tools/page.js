@@ -2,12 +2,14 @@ export const dynamic = "force-dynamic";
 import { refreshDataTools } from "@/components/Refresh-Functions/toolsRefreshFunction";
 import { columns } from "@/components/ReusableTable/column";
 import { DataTable } from "@/components/ReusableTable/data-table";
-import { payments } from "@/data/payments";
-import axios from "axios";
-import React from "react";
+
+import { axiosClient } from "@/lib/apiClient";
+
+
 
 const AllToolsPage = async () => {
-  const res = await axios("http://localhost:3000/api/admin/tools");
+  // edit this to fetch tools from the server
+  const res = await axiosClient.get("/api/admin/tools");
   const tools = res?.data || [];
 
   return (

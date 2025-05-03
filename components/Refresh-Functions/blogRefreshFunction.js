@@ -1,8 +1,9 @@
 "use client";
-import axios from "axios";
+import { axiosClient } from "@/lib/apiClient";
+
 
 export const refreshBlogs = async () => {
-  const res = await axios("http://localhost:3000/api/blogs");
+  const res = await axiosClient(`/api/blogs`);
   const blog = res?.data?.simplifiedBlogs || [];
   return blog;
 };

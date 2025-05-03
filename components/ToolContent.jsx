@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // Custom renderer to add IDs and classes to headings
-import { marked } from "marked";
+
 import Link from "next/link";
 
-const headingMap = new Map();
 import {
   FaFacebookF,
   FaTwitter,
@@ -23,39 +22,7 @@ import {
   WhatsappShareButton,
 } from "react-share";
 
-marked.use({
-  walkTokens(token) {
-    if (token.type === "heading") {
-      const raw = token.text || "";
-      const id = raw
-        .toLowerCase()
-        .trim()
-        .replace(/\s+/g, "-")
-        .replace(/[^\w\-]+/g, "");
-      token.id = id;
-      headingMap.set(raw, id);
-    }
-  },
-  renderer: {
-    heading(text) {
-      let plainText = "";
-
-      if (typeof text === "string") {
-        plainText = text;
-      } else if (typeof text === "object" && Array.isArray(text.text)) {
-        plainText = text?.text?.join("");
-      } else {
-        plainText = String(text || "heading");
-      }
-
-      const id = text;
-      return `<h${text?.depth} id="${text.id}" class="toolDetails-heading toolDetails-h${text.depth}">${text.text}</h${text.depth}>`;
-    },
-  },
-});
-const renderContent = (content) => {
-  return marked.parse(content);
-};
+import MarkdownIt from "markdown-it";
 
 const ToolContent = ({ toolDetails, categories, recentPosts, toolCategories}) => {
      const [scrollPosition, setScrollPosition] = useState(0);
@@ -63,29 +30,12 @@ const ToolContent = ({ toolDetails, categories, recentPosts, toolCategories}) =>
      const [titles, setTitles] = useState([]);
      const shareUrl = "https://seostudio.tools/";
      const title = "Check out this awesome SEO tool!";
-     const authorNameLink = toolDetails?.authorName?.replace(/\s+/g, "-");
+      const md = MarkdownIt();
 
-       useEffect(() => {
-         const parseTitles = () => {
-           const tempTitles = [];
-           const contentElement = document.createElement("div");
-           contentElement.innerHTML = renderContent(toolDetails?.content);
+      const parsedContent = md.render(toolDetails?.content || "");
      
-           const hTags = contentElement.querySelectorAll("h1, h2, h3");
-           hTags.forEach((tag) => {
-             const id = tag.id || tag.textContent.replace(/\s+/g, "-").toLowerCase();
-             tempTitles.push({
-               id,
-               title: tag.textContent,
-               tag: tag.tagName.toLowerCase(),
-             });
-           });
-     
-           setTitles(tempTitles);
-         };
-     
-         parseTitles();
-       }, [toolDetails.content]);
+
+ 
      
        const handleScroll = () => {
          const scrollY = window.scrollY;
@@ -163,12 +113,13 @@ const ToolContent = ({ toolDetails, categories, recentPosts, toolCategories}) =>
         <div className="col-span-3 bg-white border shadow-sm order-1 lg:order-2">
           <figure>
             <img
-              src={toolDetails?.coverImage}
+              src={toolDetails?.image}
               alt="toolDetails cover image"
-              className="w-full object-cover h-96 p-2"
+              className={`${
+                toolDetails?.image ? "" : "hidden"
+              } w-full object-cover h-96 p-2`}
             />
             <div className="flex gap-x-3 p-4">
-              
               <p className="text-seo-forth-color font-bold">
                 Category:{" "}
                 <span className="text-seo-des-color-second font-normal">
@@ -179,10 +130,16 @@ const ToolContent = ({ toolDetails, categories, recentPosts, toolCategories}) =>
           </figure>
 
           <div className="mb-8 p-4">
-            <div
-              className="toolDetails-content"
-              dangerouslySetInnerHTML={{ __html: renderContent(toolDetails?.content) }}
-            />
+            {parsedContent ? (
+              <article
+                className="blog-content"
+                dangerouslySetInnerHTML={{ __html: parsedContent }}
+              />
+            ) : (
+              <p className="text-center font-medium text-seo-primary my-5">
+                No Content To show
+              </p>
+            )}
           </div>
         </div>
 
@@ -194,7 +151,6 @@ const ToolContent = ({ toolDetails, categories, recentPosts, toolCategories}) =>
           initial={{ opacity: 0 }}
           animate={{ opacity: sidebarVisible ? 1 : 0 }}
         >
-         
           {/* Categories */}
           <div className="mb-8 p-2">
             <h3 className="text-xl font-bold mb-4">Tools Categories</h3>

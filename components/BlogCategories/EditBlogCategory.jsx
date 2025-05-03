@@ -19,20 +19,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
+
 
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { generateSlug } from "../tools-categories-form";
 import { Loader2 } from "lucide-react";
 
-const EditBlogCategoryForm = ({ initialData, parentCategories }) => {
+const EditBlogCategoryForm = ({ initialData }) => {
   const [loading, setLoading] = useState(false);
   const [isSlugManuallyModified, setIsSlugManuallyModified] = useState(false);
   const router = useRouter();
@@ -46,7 +40,7 @@ const EditBlogCategoryForm = ({ initialData, parentCategories }) => {
       description: initialData?.description || "",
       metaTitle: initialData?.metaTitle || "",
       metaDescription: initialData?.metaDescription || "",
-      parentCategory: initialData?.parentCategory?._id || "",
+ 
     },
   });
 
@@ -177,31 +171,7 @@ const EditBlogCategoryForm = ({ initialData, parentCategories }) => {
           )}
         />
 
-        {/* Parent Category */}
-        <FormField
-          name="parentCategory"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Parent Category</FormLabel>
-              <Select value={field.value} onValueChange={field.onChange}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select parent category (optional)" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {parentCategories?.map((cat) => (
-                    <SelectItem key={cat._id} value={cat._id}>
-                      {cat.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      
 
         <Button type="submit" disabled={loading}>
           {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin"  /> : "Update Category"}

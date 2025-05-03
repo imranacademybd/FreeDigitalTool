@@ -43,6 +43,7 @@ export default async function ToolPage({ params }) {
        "/api/blogs/blog-categories"
      );
      const categories = categoriesResponse?.data?.simplifiedBlogsCategories;
+     
 
       const toolCategoriesResponse = await axiosClient.get(
         "/api/admin/getCategory"
@@ -54,6 +55,7 @@ export default async function ToolPage({ params }) {
         `/api/blogs?recent=true`
       );
       const blogs = recentBlogResponse?.data?.simplifiedBlogs || [];
+      console.log(tool, "tool details");
  
    
   return (

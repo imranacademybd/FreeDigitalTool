@@ -30,7 +30,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { generateSlug } from "../tools-categories-form";
 
-const CreateBlogCategoryForm = ({ parentCategories }) => {
+const CreateBlogCategoryForm = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [isSlugManuallyModified, setIsSlugManuallyModified] = useState(false);
@@ -44,7 +44,6 @@ const CreateBlogCategoryForm = ({ parentCategories }) => {
       description: "",
       metaTitle: "",
       metaDescription: "",
-      parentCategory: "",
     },
   });
 
@@ -163,31 +162,6 @@ const CreateBlogCategoryForm = ({ parentCategories }) => {
               <FormControl>
                 <Textarea {...field} rows={2} />
               </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          name="parentCategory"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Parent Category</FormLabel>
-              <Select value={field.value} onValueChange={field.onChange}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select parent category (optional)" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {parentCategories?.map((cat) => (
-                    <SelectItem key={cat._id} value={cat._id}>
-                      {cat.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
               <FormMessage />
             </FormItem>
           )}

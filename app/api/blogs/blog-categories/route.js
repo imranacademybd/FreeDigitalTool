@@ -7,10 +7,8 @@ export async function GET() {
     await dbConnect();
     const categories = await BlogCategory.find();
     // Check if blogs are found
-    const simplifiedBlogsCategories = categories?.map((cat) => {
-      const catObj = cat.toObject();
-    });
-    return Response.json({ status: "SUCCESS", simplifiedBlogsCategories });
+    
+    return Response.json({ status: "SUCCESS", categories });
   } catch (err) {
     console.log("blogs categories error: ", err);
 

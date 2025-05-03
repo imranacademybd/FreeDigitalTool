@@ -17,7 +17,7 @@ const BlogCategoriesTable = ({ categories }) => {
     const res = await axiosClient.get(
       "/api/blogs/blog-categories"
     );
-    const categories = res?.data?.simplifiedBlogsCategories;
+    const categories = res?.data?.categories;
     return categories;
   };
 

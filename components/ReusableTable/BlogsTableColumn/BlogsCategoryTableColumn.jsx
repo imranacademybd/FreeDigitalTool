@@ -39,18 +39,7 @@ export const blogCategoryColumns = [
     accessorKey: "title",
     header: "Title",
   },
-  {
-    accessorKey: "parentCategory",
-    header: "Parent Category",
-    cell: ({ row }) => {
-      const parentCategory = row.getValue("parentCategory");
-      return (
-        <div className="text-center font-medium">
-          {parentCategory ? parentCategory : "No Parent Categories to show"}
-        </div>
-      );
-    },
-  },
+
   {
     accessorKey: "toolsCount",
     header: ({ column }) => (

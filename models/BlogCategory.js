@@ -11,11 +11,7 @@ const blogCategorySchema = new mongoose.Schema(
     metaTitle: { type: String },
     metaDescription: { type: String },
 
-    parentCategory: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
-      optional: true,
-    },
+  
   },
   {
     timestamps: true, // includes createdAt and updatedAt

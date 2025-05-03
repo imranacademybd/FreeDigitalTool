@@ -7,9 +7,7 @@ import { axiosClient } from "@/lib/apiClient";
 import React from "react";
 
 const page = async () => {
-  const parentCategoryResponse = await axiosClient.get(
-    "/api/admin/getCategory"
-  );
+
 
   const blogCategoryResponse = await axiosClient.get(
     "/api/blogs/blog-categories"
@@ -23,7 +21,7 @@ const page = async () => {
       {/* categories form */}
       <div className="space-y-6">
         <h2 className="text-2xl font-semibold">Create New Blog Category</h2>
-        <CreateBlogCategoryForm parentCategories={parentCategories} />
+        <CreateBlogCategoryForm  />
       </div>
       {/* categories table */}
       <BlogCategoriesTable categories={blogCategories} />

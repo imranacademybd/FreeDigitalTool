@@ -30,7 +30,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { generateSlug } from "../tools-categories-form";
 
-const CreateBlogCategoryForm = ( ) => {
+const CreateBlogCategoryForm = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [isSlugManuallyModified, setIsSlugManuallyModified] = useState(false);
@@ -44,7 +44,6 @@ const CreateBlogCategoryForm = ( ) => {
       description: "",
       metaTitle: "",
       metaDescription: "",
-      
     },
   });
 
@@ -167,8 +166,6 @@ const CreateBlogCategoryForm = ( ) => {
             </FormItem>
           )}
         />
-
-    
 
         <Button type="submit" disabled={loading}>
           {loading ? "Creating..." : "Create Category"}

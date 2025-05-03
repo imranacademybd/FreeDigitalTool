@@ -9,7 +9,7 @@ const BlogEditPage = async ({ params }) => {
   const blogCatRes = await axiosClient(
     "/api/blogs/blog-categories"
   );
-  const categories = await blogCatRes?.data?.simplifiedBlogsCategories;
+  const categories = await blogCatRes?.data?.categories;
 
   
 

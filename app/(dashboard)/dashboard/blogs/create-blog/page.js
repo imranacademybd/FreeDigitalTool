@@ -8,7 +8,7 @@ const page = async () => {
   const blogCatRes = await axiosClient.get(
     "/api/blogs/blog-categories"
   );
-  const categories = await blogCatRes?.data?.simplifiedBlogsCategories;
+  const categories = await blogCatRes?.data?.categories;
 
   return (
     <div className="max-w-7xl mx-auto p-4 font-roboto">

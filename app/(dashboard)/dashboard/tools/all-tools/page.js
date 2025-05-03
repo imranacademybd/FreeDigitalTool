@@ -8,6 +8,7 @@ import { axiosClient } from "@/lib/apiClient";
 import React from "react";
 
 const AllToolsPage = async () => {
+  // edit this to fetch tools from the server
   const res = await axiosClient.get("/api/admin/tools");
   const tools = res?.data || [];
 

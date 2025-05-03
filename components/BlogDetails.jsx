@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-// Custom renderer to add IDs and classes to headings
-import { marked } from "marked";
+
 import Link from "next/link";
 
-const headingMap = new Map();
+
 import {
   FaFacebookF,
   FaTwitter,

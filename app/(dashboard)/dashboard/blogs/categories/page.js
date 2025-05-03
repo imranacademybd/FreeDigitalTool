@@ -2,16 +2,17 @@ export const dynamic = "force-dynamic";
 
 import BlogCategoriesTable from "@/components/BlogCategories/BlogCategoriesTable";
 import CreateBlogCategoryForm from "@/components/BlogCategories/CreateBlogCategory";
-import axios from "axios";
+import { axiosClient } from "@/lib/apiClient";
+
 import React from "react";
 
 const page = async () => {
-  const parentCategoryResponse = await axios(
-    "http://localhost:3000/api/admin/getCategory"
+  const parentCategoryResponse = await axiosClient.get(
+    "/api/admin/getCategory"
   );
 
-  const blogCategoryResponse = await axios(
-    "http://localhost:3000/api/blogs/blog-categories"
+  const blogCategoryResponse = await axiosClient.get(
+    "/api/blogs/blog-categories"
   );
   const blogCategories = blogCategoryResponse?.data?.simplifiedBlogsCategories;
 

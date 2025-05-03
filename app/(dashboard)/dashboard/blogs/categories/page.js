@@ -12,7 +12,7 @@ const page = async () => {
   const blogCategoryResponse = await axiosClient.get(
     "/api/blogs/blog-categories"
   );
-  const blogCategories = blogCategoryResponse?.data?.simplifiedBlogsCategories;
+  const blogCategories = blogCategoryResponse?.data?.simplifiedBlogsCategories || [];
   console.log("blogCategories", blogCategories);
   if (!blogCategories) {
     return <div className="text-center">No blog categories found</div>;

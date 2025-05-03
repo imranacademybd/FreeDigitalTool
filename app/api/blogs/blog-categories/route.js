@@ -11,10 +11,7 @@ export async function GET() {
     const simplifiedBlogsCategories = categories?.map((cat) => {
       const catObj = cat.toObject();
 
-      return {
-        ...catObj,
-        parentCategory: catObj.parentCategory?.name || null, // ✅ Only the name as a string
-      };
+      
     });
     return Response.json({ status: "SUCCESS", simplifiedBlogsCategories });
   } catch (err) {

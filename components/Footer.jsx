@@ -20,7 +20,7 @@ const Footer = () => {
               />
             </Link>
             <p className="text-base">
-              SeoStudio provides over 170 free tools for SEO experts, YouTubers,
+            FreeDigitalTool provides over 170 free tools for SEO experts, YouTubers,
               webmasters, students, and writers. These tools cover keyword
               research, backlink tracking, content optimization, and more to
               enhance your digital strategies and online presence.

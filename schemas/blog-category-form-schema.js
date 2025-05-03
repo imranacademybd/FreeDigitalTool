@@ -9,5 +9,5 @@ export const blogCategoryFormSchema = z.object({
   metaTitle: z.string().optional(),
   metaDescription: z.string().optional(),
 
-  parentCategory: z.string().optional(), // can be null or an ObjectId string
+ // can be null or an ObjectId string
 });

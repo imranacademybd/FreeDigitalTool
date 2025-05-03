@@ -1,14 +1,15 @@
 import EditBlogCategoryForm from "@/components/BlogCategories/EditBlogCategory";
-import axios from "axios";
+import { axiosClient } from "@/lib/apiClient";
+
 import { notFound } from "next/navigation";
 
 const page = async ({ params }) => {
   const { id } = await params;
-  const res = await axios(
-    `http://localhost:3000/api/blogs/blog-categories/${id}`
+  const res = await axiosClient.get(
+    `/api/blogs/blog-categories/${id}`
   );
-  const parentCategoryResponse = await axios(
-    "http://localhost:3000/api/admin/getCategory"
+  const parentCategoryResponse = await axiosClient.get(
+    "/api/admin/getCategory"
   );
   const parentCategories = parentCategoryResponse.data.data;
   const { status, category: blogCategory } = res.data;

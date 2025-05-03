@@ -192,7 +192,10 @@ export const columns = [
                   <Tooltip>
                     <TooltipTrigger>
                       {" "}
-                      <Link href={`http://localhost:3000`}>
+                      <Link
+                        href={`${process.env.NEXT_PUBLIC_BASE_URL}/tools/${data?.slug}`}
+                        target="_blank"
+                      >
                         {" "}
                         <ViewIcon className="h-5 w-5" />
                       </Link>{" "}
@@ -207,7 +210,7 @@ export const columns = [
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
-                      <p onClick={()=> handleDelete(data._id, column)} >
+                      <p onClick={() => handleDelete(data._id, column)}>
                         {" "}
                         <DeleteIcon className="text-red-900" />{" "}
                       </p>

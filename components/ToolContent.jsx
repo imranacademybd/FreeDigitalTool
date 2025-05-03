@@ -63,7 +63,7 @@ const ToolContent = ({ toolDetails, categories, recentPosts, toolCategories}) =>
      const [titles, setTitles] = useState([]);
      const shareUrl = "https://seostudio.tools/";
      const title = "Check out this awesome SEO tool!";
-     const authorNameLink = toolDetails?.authorName?.replace(/\s+/g, "-");
+     
 
        useEffect(() => {
          const parseTitles = () => {
@@ -163,9 +163,9 @@ const ToolContent = ({ toolDetails, categories, recentPosts, toolCategories}) =>
         <div className="col-span-3 bg-white border shadow-sm order-1 lg:order-2">
           <figure>
             <img
-              src={toolDetails?.coverImage}
+              src={toolDetails?.image}
               alt="toolDetails cover image"
-              className="w-full object-cover h-96 p-2"
+              className={`${toolDetails?.image ? "" : "hidden"} w-full object-cover h-96 p-2`}
             />
             <div className="flex gap-x-3 p-4">
               
